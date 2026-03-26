@@ -3,14 +3,14 @@ pipeline {
 
   environment {
     AWS_REGION = 'ap-south-1'
-    ECR_REPO = 'YOUR_ECR_URI'
+    ECR_REPO = '202264954934.dkr.ecr.ap-south-1.amazonaws.com/eks-real-app'
   }
 
   stages {
 
     stage('Checkout') {
       steps {
-        git 'https://github.com/YOUR_USERNAME/eks-real-app.git'
+        git 'https://github.com/suryadevara2025/eks-real-app.git'
       }
     }
 
