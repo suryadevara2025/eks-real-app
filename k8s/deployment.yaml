@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: eks-real-app
-        image: REPLACE_WITH_ECR_URI:latest
+        image: 202264954934.dkr.ecr.ap-south-1.amazonaws.com/eks-real-app:latest
         ports:
         - containerPort: 3000
