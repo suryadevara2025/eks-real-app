@@ -10,7 +10,7 @@ pipeline {
 
     stage('Checkout') {
       steps {
-        git 'https://github.com/suryadevara2025/eks-real-app.git'
+        git branch: 'main', url: 'https://github.com/suryadevara2025/eks-real-app.git'
       }
     }
 
