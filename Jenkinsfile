@@ -16,29 +16,29 @@ pipeline {
 
     stage('Build Docker Image') {
       steps {
-        sh 'docker build -t $ECR_REPO:latest .'
+        sh 'docker build -t 202264954934.dkr.ecr.ap-south-1.amazonaws.com/eks-real-app:latest .'
       }
     }
 
     stage('Login to ECR') {
       steps {
         sh '''
-        aws ecr get-login-password --region $AWS_REGION | \
-        docker login --username AWS --password-stdin $ECR_REPO
+        aws ecr get-login-password --region ap-south-1 | \
+        docker login --username AWS --password-stdin 202264954934.dkr.ecr.ap-south-1.amazonaws.com/eks-real-app
         '''
       }
     }
 
     stage('Push Image') {
       steps {
-        sh 'docker push $ECR_REPO:latest'
+        sh 'docker push 202264954934.dkr.ecr.ap-south-1.amazonaws.com/eks-real-app:latest'
       }
     }
 
     stage('Deploy to EKS') {
       steps {
         sh '''
-        sed -i "s|REPLACE_WITH_ECR_URI|$ECR_REPO|g" k8s/deployment.yaml
+        sed -i "s202264954934.dkr.ecr.ap-south-1.amazonaws.com/eks-real-appg" k8s/deployment.yaml
         kubectl apply -f k8s/
         '''
       }
